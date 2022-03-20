@@ -38,23 +38,6 @@ public class EmployeeDatabase {
     }
     
 
-//    Adding employees to their respective databases
-//    public static void main(String[] args) {
-//        salary_employees_arr.add(s1);
-//        salary_employees_arr.add(s2);
-//        salary_employees_arr.add(s3);
-//        hourly_employees_arr.add(h1);
-//        hourly_employees_arr.add(h2);
-//        hourly_employees_arr.add(h3);
-//
-//        employee_arr.add(s1);
-//        employee_arr.add(s2);
-//        employee_arr.add(s3);
-//        employee_arr.add(h1);
-//        employee_arr.add(h2);
-//        employee_arr.add(h3);
-//    }
-
 // Method that returns an ArrayList for all hourly employeees
     public static ArrayList<HourlyEmployee> get_hourly_employees() {
         return hourly_employees_arr;
@@ -63,6 +46,18 @@ public class EmployeeDatabase {
     public static ArrayList<SalaryEmployee> get_salaried_employees() {return salary_employees_arr;}
 // Method that returns the arraylist for all employees
     public static ArrayList<Employee> get_employees() {return employee_arr;}
+    
+    public static boolean check_hourly_employee(Employee employee) {
+        for (int i = 0; i<employee_arr.size();i++) {
+           if (employee.toString().contains(", hourlyRate=")) {
+               return true;
+           }
+           else {
+               return false;
+           }
+        }
+        return false;
+    }
 // Method that gets employee by their IDs
     public static Employee get_employee_by_id(int id){
 //        Loops through the employee array and tries to find a match with the argument being passed

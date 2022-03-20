@@ -41,7 +41,7 @@ public class HourlyEmployee extends Employee{
                 ", lastName=" + lastName + 
                 ", employeeId=" + employeeId + 
                 ", socialSecurityNumber=" + socialSecurityNumber + 
-                "hourlyRate=" + hourlyRate + 
+                ", hourlyRate=" + hourlyRate + 
                 ", overtimeRate=" + overtimeRate +
                 ", userID=" + userID +
                 ", password=" + password +'}';

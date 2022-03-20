@@ -58,6 +58,20 @@
         %>
         </h1>
         
+        <h2>
+            <%
+            for (int i = 1; i <= EmployeeDatabase.get_employees().size(); i++) {
+                if (EmployeeDatabase.check_hourly_employee(EmployeeDatabase.get_employee_by_id(i)) == true) {
+                    out.println("This employee is an hourly employee");
+                    break;
+                } else {
+                    out.println("This employee is a salaried employee");
+                    break;
+                }
+            }
+            %>
+        </h2>
+        
         <div class="btnDiv">
             <button class="btn" type="button" name="back" onclick="">Add/Update Timecards</button>
             <span class="btnSpan"></span>
