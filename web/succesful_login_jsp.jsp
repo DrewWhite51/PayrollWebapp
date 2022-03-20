@@ -25,11 +25,20 @@
         .btn{
             padding-left: 1.5rem;
             padding-right: 1.5rem;
+        }       
+        .btn {
+            transition-duration: 0.4s;
+        }
+        .btn:hover {
+          background-color: #4CAF50; /* Green */
+          color: white;
         }
         .btnSpan{
             margin-left: 20px;
         }
     </style>
+    
+    
 </head>
 <body>
 
@@ -58,50 +67,27 @@
         %>
         </h1>
         
-        <h2>
-            <%
-            for (int i = 1; i <= EmployeeDatabase.get_employees().size(); i++) {
-                if (EmployeeDatabase.check_hourly_employee(EmployeeDatabase.get_employee_by_id(i)) == true) {
-                    out.println("This employee is an hourly employee");
-                    break;
-                } else {
-                    out.println("This employee is a salaried employee");
-                    break;
-                }
-            }
-            %>
-        </h2>
+
         
         <div class="btnDiv">
             <button class="btn" type="button" name="back" onclick="">Add/Update Timecards</button>
             <span class="btnSpan"></span>
-            <button class="btn" type="button" name="back" onclick="">Calculate Payroll</button>
+            <button class="btn" type="button" name="back" onclick="optionUnavailable()">Calculate Payroll</button>
             <span class="btnSpan"></span>
-            <button class="btn" type="button" name="back" onclick="">Exit</button>
+            <input type="button" value="Exit" onclick="window.location='index.html'" >
         </div>
         
-        
-<!--        <table>
-            <td>
-                <tr>
-                    <%
-                    out.println(userID);
-                    %>
-                </tr>
-                
-                <tr>
-                    <%
-                    out.println(password);
-                    %>
-                </tr>
-            </td>
-        </table>-->
+
         
         
         
 
         
-
+    <script>
+        function optionUnavailable() {
+          alert("That option is not available yet.");
+        }
+    </script>
 
 </body>
 </html>

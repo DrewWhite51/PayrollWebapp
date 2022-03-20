@@ -42,7 +42,6 @@ public class LoginProcessor extends HttpServlet {
                  }
             }
             if (!found) {
-                out.println("Unsuccesful login, try again...");
                 getServletContext().getRequestDispatcher(unsuccesfulUrl).forward(request, response);
             }
             
