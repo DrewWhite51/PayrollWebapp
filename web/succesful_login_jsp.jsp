@@ -18,6 +18,17 @@
         body {background-color: #f1faee;}
         h1   {text-align: center; margin-left:5rem; margin-right:5rem;}
         table{border-collapse:collapse;border:1px solid #FF0000;}
+        .btnDiv{
+            display: flex;
+            justify-content: center;
+        }
+        .btn{
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        .btnSpan{
+            margin-left: 20px;
+        }
     </style>
 </head>
 <body>
@@ -47,8 +58,16 @@
         %>
         </h1>
         
+        <div class="btnDiv">
+            <button class="btn" type="button" name="back" onclick="">Add/Update Timecards</button>
+            <span class="btnSpan"></span>
+            <button class="btn" type="button" name="back" onclick="">Calculate Payroll</button>
+            <span class="btnSpan"></span>
+            <button class="btn" type="button" name="back" onclick="">Exit</button>
+        </div>
         
-        <table>
+        
+<!--        <table>
             <td>
                 <tr>
                     <%
@@ -62,7 +81,7 @@
                     %>
                 </tr>
             </td>
-        </table>
+        </table>-->
         
         
         
