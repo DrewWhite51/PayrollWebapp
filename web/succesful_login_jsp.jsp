@@ -69,14 +69,28 @@
                 out.println(user.employeeId);
             %>
         </h1>
+        
+        <h1>
+            <%
+                if (EmployeeDatabase.check_hourly_employee(user) == true) {
+                    out.println("Hourly employee verified, timecard functionality available.");
+                } else {
+                    out.println("Timecard functionality disabled, salaried employee.");
+                }
+            %>
+        </h1>
 
         
 
         
 
-
+        <%
+            String pageName = "timecard.jsp";
+        %>
         <div class="btnDiv">
-            <button class="btn" action="timecard" type="button">Add/Update Timecards</button>
+                
+            <button class="btn" action="timecard" type="button" onclick="redirectPage('<%=pageName%>')">Add/Update Timecards</button>
+            
             <span class="btnSpan"></span>
             <button class="btn" type="button" name="back" onclick="optionUnavailable()">Calculate Payroll</button>
             <span class="btnSpan"></span>
@@ -91,6 +105,9 @@
     <script>
         function optionUnavailable() {
           alert("That option is not available yet.");
+        }
+        function redirectPage(pageName){
+            window.location.href=pageName;
         }
         
     </script>

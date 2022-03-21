@@ -4,6 +4,7 @@
     Author     : drewm
 --%>
 
+<%@page import="business_layer.Employee"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -32,10 +33,23 @@
         </style>
     </head>
     <body>
+        
+        <%
+            HttpSession httpSession = request.getSession(false); 
+            //False because we do not want it to create a new session if it does not exist.
+            Employee user = null;
+            if(httpSession != null){
+                user = (Employee)httpSession.getAttribute("currentUser");                
+            }
+            if(user!=null){
+                // Do stuff here
+            }
+            
+        %>
         <h1>Displaying time cards for: </h1>
         <h1>
             <%
-                
+                out.println(user.firstName);
             %>
         </h1>
         
