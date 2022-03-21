@@ -5,6 +5,7 @@
  */
 package Servlets;
 
+import business_layer.Employee;
 import business_layer.HourlyEmployee;
 import data_access_layer.EmployeeDatabase;
 import java.io.IOException;
@@ -27,16 +28,19 @@ public class LoginProcessor extends HttpServlet {
            String userID = request.getParameter("userID");
            String password = request.getParameter("password");
            
-            PrintWriter out = response.getWriter();
-             
-            String successUrl = "/succesful_login_jsp.jsp";
-            String unsuccesfulUrl = "/unsuccesful_login_jsp.jsp";
+
+                        
+           String successUrl = "/succesful_login_jsp.jsp";
+           String unsuccesfulUrl = "/unsuccesful_login_jsp.jsp";
             
-            
+            Employee currentUser = null;
             boolean found = false;
             for (int i = 1; i <= EmployeeDatabase.get_employees().size(); i++){
                  if (userID.equals(EmployeeDatabase.get_employee_by_id(i).userID) && password.equals(EmployeeDatabase.get_employee_by_id(i).password)) {
                      found = true;
+                     currentUser = EmployeeDatabase.get_employee_by_id(i);
+                     HttpSession httpSession = request.getSession();
+                     httpSession.setAttribute("currentUser", currentUser);
                      getServletContext().getRequestDispatcher(successUrl).forward(request, response);
                      break;
                  }
@@ -46,10 +50,6 @@ public class LoginProcessor extends HttpServlet {
             }
             
 
-
-
-
-           
-
+            
        }
 }

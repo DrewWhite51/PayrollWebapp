@@ -23,24 +23,10 @@ public class TimecardServlet extends HttpServlet {
            String userID = request.getParameter("userID");
            String password = request.getParameter("password");
            
-            PrintWriter out = response.getWriter();
              
-            String successUrl = "/succesful_login_jsp.jsp";
-            String unsuccesfulUrl = "/unsuccesful_login_jsp.jsp";
+            String url = "/timecard.jsp";
             
-            
-            boolean found = false;
-            for (int i = 1; i <= EmployeeDatabase.get_employees().size(); i++){
-                 if (userID.equals(EmployeeDatabase.get_employee_by_id(i).userID) && password.equals(EmployeeDatabase.get_employee_by_id(i).password)) {
-                     found = true;
-                     getServletContext().getRequestDispatcher(successUrl).forward(request, response);
-                     break;
-                 }
-            }
-            if (!found) {
-                out.println("Unsuccesful login, try again...");
-                getServletContext().getRequestDispatcher(unsuccesfulUrl).forward(request, response);
-            }
+            getServletContext().getRequestDispatcher(url).forward(request, response);
        
        }
        

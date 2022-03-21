@@ -42,42 +42,41 @@
 </head>
 <body>
 
-        <h1>
-        <%
-            String userID = request.getParameter("userID");
-            String password = request.getParameter("password");
 
-            for (int i = 1; i <= EmployeeDatabase.get_employees().size(); i++) {
-                if (userID.equals(EmployeeDatabase.get_employee_by_id(i).userID) && password.equals(EmployeeDatabase.get_employee_by_id(i).password)){
-                    out.println("Login was succesful!!");
-                    out.println("<br/>");
-                    out.println("Name: ");
-                    out.println(EmployeeDatabase.get_employee_by_id(i).firstName);
-                    out.println(EmployeeDatabase.get_employee_by_id(i).lastName);
-                    out.println("<br/>");
-                    out.println("Employee ID: ");
-                    out.println(EmployeeDatabase.get_employee_by_id(i).employeeId);
-                    out.println("<br/>");
-                    out.println("Employee SSN: ");
-                    out.println(EmployeeDatabase.get_employee_by_id(i).socialSecurityNumber);
-                    out.println(EmployeeDatabase.check_hourly_employee(EmployeeDatabase.get_employee_by_id(i)));
-                    if (EmployeeDatabase.check_hourly_employee(EmployeeDatabase.get_employee_by_id(i)) == true) {
-                        out.println("This is an hourly employee");
-                    }
-                    break;
-                }
+        <%
+            HttpSession httpSession = request.getSession(false); 
+            //False because we do not want it to create a new session if it does not exist.
+            Employee user = null;
+            if(httpSession != null){
+                user = (Employee)httpSession.getAttribute("currentUser");                
             }
+            if(user!=null){
+                // Do stuff here
+            }
+            
         %>
+        
+        <h1>
+            Employee Name:
+            <%
+                out.println(user.firstName + " " + user.lastName);
+            %>
         </h1>
         
+        <h1>
+            Employee ID:
+            <%
+                out.println(user.employeeId);
+            %>
+        </h1>
 
         
 
-        <%  
-            String pageName = "timecard.jsp";  
-        %>
+        
+
+
         <div class="btnDiv">
-            <button class="btn" type="button" name="timecards" onclick="redirectPage('<%=pageName%>')">Add/Update Timecards</button>
+            <button class="btn" action="timecard" type="button">Add/Update Timecards</button>
             <span class="btnSpan"></span>
             <button class="btn" type="button" name="back" onclick="optionUnavailable()">Calculate Payroll</button>
             <span class="btnSpan"></span>
@@ -94,9 +93,6 @@
           alert("That option is not available yet.");
         }
         
-        function redirectPage(pageName){
-            window.location.href=pageName;
-        }
     </script>
 
 </body>
