@@ -1,1 +1,1 @@
-"# PayrollWebapp"  initgit add README.mdgit commit -m "first commit"git branch -M maingit remote add origin https://github.com/DrewWhite51/PayrollWebapp.gitgit push -u origin main
+This project is a payroll application that is being built for a lab for my Ebussiness Applications Class at Pittsburg State University.
