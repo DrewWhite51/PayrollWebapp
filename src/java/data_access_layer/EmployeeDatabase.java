@@ -49,12 +49,7 @@ public class EmployeeDatabase {
     
     public static boolean check_hourly_employee(Employee employee) {
         for (int i = 0; i<employee_arr.size();i++) {
-           if (employee.toString().contains(", hourlyRate=")) {
-               return true;
-           }
-           else {
-               return false;
-           }
+            return employee.toString().contains(", hourlyRate=");
         }
         return false;
     }

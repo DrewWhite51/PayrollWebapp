@@ -49,7 +49,6 @@
 
             for (int i = 1; i <= EmployeeDatabase.get_employees().size(); i++) {
                 if (userID.equals(EmployeeDatabase.get_employee_by_id(i).userID) && password.equals(EmployeeDatabase.get_employee_by_id(i).password)){
-//                    out.println(EmployeeDatabase.get_employee_by_id(i).toString());
                     out.println("Login was succesful!!");
                     out.println("<br/>");
                     out.println("Name: ");
@@ -61,6 +60,10 @@
                     out.println("<br/>");
                     out.println("Employee SSN: ");
                     out.println(EmployeeDatabase.get_employee_by_id(i).socialSecurityNumber);
+                    out.println(EmployeeDatabase.check_hourly_employee(EmployeeDatabase.get_employee_by_id(i)));
+                    if (EmployeeDatabase.check_hourly_employee(EmployeeDatabase.get_employee_by_id(i)) == true) {
+                        out.println("This is an hourly employee");
+                    }
                     break;
                 }
             }
@@ -69,12 +72,16 @@
         
 
         
+
+        <%  
+            String pageName = "timecard.jsp";  
+        %>
         <div class="btnDiv">
-            <button class="btn" type="button" name="back" onclick="">Add/Update Timecards</button>
+            <button class="btn" type="button" name="timecards" onclick="redirectPage('<%=pageName%>')">Add/Update Timecards</button>
             <span class="btnSpan"></span>
             <button class="btn" type="button" name="back" onclick="optionUnavailable()">Calculate Payroll</button>
             <span class="btnSpan"></span>
-            <input type="button" value="Exit" onclick="window.location='index.html'" >
+            <input class="btn" type="button" value="Exit" onclick="window.location='index.html'" >
         </div>
         
 
@@ -82,10 +89,13 @@
         
         
 
-        
     <script>
         function optionUnavailable() {
           alert("That option is not available yet.");
+        }
+        
+        function redirectPage(pageName){
+            window.location.href=pageName;
         }
     </script>
 

@@ -5,6 +5,7 @@
  */
 package Servlets;
 
+import business_layer.Employee;
 import data_access_layer.EmployeeDatabase;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -40,12 +41,8 @@ public class TimecardServlet extends HttpServlet {
                 out.println("Unsuccesful login, try again...");
                 getServletContext().getRequestDispatcher(unsuccesfulUrl).forward(request, response);
             }
-            
-
-
-
-
-           
-
+       
        }
+       
+
 }
