@@ -4,6 +4,7 @@
     Author     : drewm
 --%>
 
+<%@page import="data_access_layer.TimeCardDatabase"%>
 <%@page import="business_layer.Employee"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -52,12 +53,18 @@
                 out.println(user.firstName);
             %>
         </h1>
+        <h2>
+            <%
+                int userEmpId = user.employeeId;
+                out.println(TimeCardDatabase.get_timecards_by_employee_id(userEmpId));
+            %>
+        </h2>
         
         
          <div class="btn-group">
-            <button>Apple</button>
-            <button>Samsung</button>
-            <button>Sony</button>
+            <button>Add</button>
+            <button>Update</button>
+            <button>Delete</button>
         </div> 
     </body>
 </html>
